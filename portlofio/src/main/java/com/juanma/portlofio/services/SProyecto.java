@@ -10,17 +10,14 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-@Transactional//persistencia en base de datos
 public class SProyecto {
     
     
       @Autowired
     RProyecto rProyecto;
     
-      
-      
-      //--------------------------------------------
-      //traer todo
+     
+    //todos los elementos
      public List<Proyecto> list(){
         return rProyecto.findAll();
      }
@@ -28,28 +25,17 @@ public class SProyecto {
       
         
     //traer uno
-      public Proyecto getOne(int id){
+      public Proyecto getOne(long id){
         Proyecto proye = rProyecto.findById(id).orElse(null);
         return proye;
     }  
-      
-      
-      
-    //--------------------------------------------
-    //busca lista de relojes por la id de la persona
-    public List<Proyecto> findByPersonaId(Long personaId) {
-        return rProyecto.findByPersonaId(personaId);
+     
+    
+    public void save(Proyecto proye){
+       rProyecto.save(proye);
     }
     
-    //--------------------------------------------
-    
-    
-    
-       public void save(Proyecto proye){
-        rProyecto.save(proye);
-    }
-    
-     public void delete(int id){
+     public void delete(long id){
         rProyecto.deleteById(id);
     }
      

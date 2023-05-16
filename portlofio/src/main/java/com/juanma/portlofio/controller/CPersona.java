@@ -30,33 +30,35 @@ public class CPersona {
         return new ResponseEntity(per, HttpStatus.OK);
     }
 
-    //para ver todas las personas
-    @GetMapping("/persona/lista")
+    //todas
+    @GetMapping("/persona/ver")
     public ResponseEntity<List<Persona>> list() {
         List<Persona> list = sPersona.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
-
+    
+    //crear persona
     @PostMapping("/persona/create")
     public String agregarPersona(@RequestBody Persona per) {
 
         sPersona.save(per);
-        return "la persona fue creada";
+        return "La persona fue creada correctamente";
     }
-    // ver por qué usa un void el
 
+    //eliminar persona
     @DeleteMapping("/persona/delete/{id}")
     public String borrarPersona(@PathVariable Long id) {
         sPersona.delete(id);
-        return "la persona fue borrada";
+        return "La persona fue eliminada correctamente";
     }
 
+    //actualizar persona
     @PutMapping("/persona/update")
     public void edit(@RequestBody Persona persona) {
         sPersona.edit(persona);
     }
 
-
+    //editar persona
     @PutMapping("/persona/editar/{id}")
     public Persona editPersona(@PathVariable Long id, @RequestParam("nombre") String nuevoNombre, @RequestParam("apellido") String nuevoApellido, @RequestParam("email") String nuevoEmail, @RequestParam("password") String nuevaPassword ) {
         Persona per = sPersona.getOne(id);

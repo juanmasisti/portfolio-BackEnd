@@ -16,16 +16,18 @@ public class SPersona {
 
     RPersona rPersona;
 
+    //todos los elementos
     public List<Persona> list() {
         return rPersona.findAll();
     }
 
+    //traer uno
     public Persona getOne(Long id) {
         Persona per = rPersona.findById(id).orElse(null);
         return per;
     }
 
-//este es el mio
+
     public void save(Persona per) {
         rPersona.save(per);
     }

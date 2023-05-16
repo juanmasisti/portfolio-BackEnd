@@ -9,25 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@Transactional//persistencia en base de datos
 public class SHabilidad {
     
-     @Autowired
+    @Autowired
     RHabilidad rHabilidad;
     
-     
-     
-     //ver todo
-     public List<Habilidad> list(){
+
+     //todos los elementos
+    public List<Habilidad> list(){
         return rHabilidad.findAll();
     }
      
-     
-     
-     
-     
-     //parece este va mejor
-        public Habilidad getOne(int id){
+     //trae uno
+     public Habilidad getOne(int id){
         return rHabilidad.findById(id).orElse(null);
     }
      
@@ -38,31 +32,13 @@ public class SHabilidad {
         rHabilidad.save(habi);
     }
     
-     public void delete(int id){
+    public void delete(int id){
         rHabilidad.deleteById(id);
     }
     
-     public void edit(Habilidad habi){
+    public void edit(Habilidad habi){
         rHabilidad.save(habi);
     }
     
-     //busca lista de relojes por la id de la persona
-    public List<Habilidad> findByPersonaId(Long personaId) {
-        return rHabilidad.findByPersonaId(personaId);
-    }
- 
-  
 
-      
-    //--------------------------------------------
-
-
-
-
-
-
-
-
-
-    
 }

@@ -25,44 +25,31 @@ public class Habilidad {
 private int id;
     
     @NotNull
-    private String habilidad;
-    
+    private String titulo;
+    @NotNull
+    private String parrafo;
     @NotNull
     @Min(0)
     @Max(100)
     private int porcentaje;
     
-    
-    
-    
-    
-    
-    //-------------------------------------------
-     //relacion
-    @ManyToOne
-    //creacion de columna con llave foranea
-    @JoinColumn(name = "personaid", insertable=false, updatable=false)
-    //para que se borre si se borra la persona
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Persona persona;
-    
-    private Long personaid;
-    
-    //-------------------------------------------
 
     
-    
-    
-    
+
+
+    // C
     public Habilidad() {
     }
 
-    public Habilidad(String habilidad, int porcentaje, Persona persona) {
-        this.habilidad = habilidad;
+    public Habilidad(int id, String titulo, String parrafo, int porcentaje) {
+        this.id = id;
+        this.titulo = titulo;
+        this.parrafo = parrafo;
         this.porcentaje = porcentaje;
-        this.persona = persona;
-        
     }
+
+    
+    // Getters And Setters
 
     public int getId() {
         return id;
@@ -72,12 +59,20 @@ private int id;
         this.id = id;
     }
 
-    public String getHabilidad() {
-        return habilidad;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setHabilidad(String habilidad) {
-        this.habilidad = habilidad;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getParrafo() {
+        return parrafo;
+    }
+
+    public void setParrafo(String parrafo) {
+        this.parrafo = parrafo;
     }
 
     public int getPorcentaje() {
@@ -90,35 +85,5 @@ private int id;
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //-------------------------------------------
-     //ver si realmente debo sacarle los getter setters y ponerlos manualmente
-    
-     //Opción para que no haga un bug
-    @JsonBackReference
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-
-    public Long getPersonaid() {
-        return personaid;
-    }
-
-    public void setPersonaid(Long personaid) {
-        this.personaid = personaid;
-    }
-    //-------------------------------------------
     
 }
